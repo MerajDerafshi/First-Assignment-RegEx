@@ -40,15 +40,14 @@ public class Exercises {
         - has no white-space in it
      */
     public int findValidPasswords(String string) {
-        String regex = "(?<![\\s])(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*_.])[A-Za-z0-9_!@#$%^&*]{8,}";
+        String regex = "\\b(?=\\S*[A-Z])(?=\\S*[a-z])(?=\\S*\\d)(?=\\S*[!@#$%^&*])\\S{8,}\\b";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(string);
-
-        int count = 0;
+        int counter = 0;
         while (matcher.find()) {
-            count++;
+            counter++;
         }
-        return count;
+        return counter;
     }
 
     /*
